@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="DyoMediator.Abstraction/DyoMediator.Abstraction.csproj" />
+  <Project Path="DyoMediator.Decorators/DyoMediator.Decorators.csproj" />
+  <Project Path="DyoMediator.Mediator/DyoMediator.Mediator.csproj" />
+  <Project Path="DyoMediator.Tests/DyoMediator.Tests.csproj" />
+</Solution>

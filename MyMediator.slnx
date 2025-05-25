@@ -1,9 +1,0 @@
-<Solution>
-  <Folder Name="/Solution Items/">
-    <File Path="Directory.Packages.props" />
-  </Folder>
-  <Project Path="MyMediator.Abstraction/MyMediator.Abstraction.csproj" />
-  <Project Path="MyMediator.Decorators/MyMediator.Decorators.csproj" />
-  <Project Path="MyMediator.Mediator/MyMediator.Mediator.csproj" />
-  <Project Path="MyMediator.Tests/MyMediator.Tests.csproj" />
-</Solution>
