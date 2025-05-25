@@ -3,8 +3,8 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Project Path="MyMediator.Abstraction/DyoMediator.Abstraction.csproj" />
-  <Project Path="MyMediator.Decorators/DyoMediator.Decorators.csproj" />
-  <Project Path="MyMediator.Mediator/DyoMediator.Mediator.csproj" />
-  <Project Path="MyMediator.Tests/DyoMediator.Tests.csproj" />
+  <Project Path="DyoMediator.Abstraction/DyoMediator.Abstraction.csproj" />
+  <Project Path="DyoMediator.Decorators/DyoMediator.Decorators.csproj" />
+  <Project Path="DyoMediator.Mediator/DyoMediator.Mediator.csproj" />
+  <Project Path="DyoMediator.Tests/DyoMediator.Tests.csproj" />
 </Solution>

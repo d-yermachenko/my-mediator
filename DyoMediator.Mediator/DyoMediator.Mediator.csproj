@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyMediator.Abstraction\DyoMediator.Abstraction.csproj" />
+    <ProjectReference Include="..\DyoMediator.Abstraction\DyoMediator.Abstraction.csproj" />
   </ItemGroup>
 
 </Project>
