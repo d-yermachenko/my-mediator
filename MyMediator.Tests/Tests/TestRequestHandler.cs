@@ -1,6 +1,6 @@
-﻿using MyMediator.Tests.Abstractions.MockImplementation;
+﻿using DyoMediator.Tests.Abstractions.MockImplementation;
 using Xunit;
-namespace MyMediator.Tests.Tests
+namespace DyoMediator.Tests
 {
     public class TestRequestHandler
     {

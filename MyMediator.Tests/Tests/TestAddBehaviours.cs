@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyMediator.Abstraction;
-using MyMediator.Mediator.DIExtension;
-using MyMediator.Tests.Abstractions.MockImplementation;
+using DyoMediator.Abstraction;
+using DyoMediator.Mediator.DIExtension;
+using DyoMediator.Tests.Abstractions.MockImplementation;
 
-namespace MyMediator.Tests.Tests;
+namespace DyoMediator.Tests;
 
 public class TestAddBehaviours
 {

@@ -1,4 +1,4 @@
-﻿namespace MyMediator.Abstraction;
+﻿namespace DyoMediator.Abstraction;
 
 public delegate Task<TResponse> RequestHandlerDelegate<in TRequest, TResponse>(TRequest next, CancellationToken cancellationToken = default)
     where TRequest : IRequest<TResponse>;

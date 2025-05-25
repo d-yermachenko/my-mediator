@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyMediator.Abstraction;
+using DyoMediator.Abstraction;
 
-namespace MyMediator.Tests.Abstractions.MockImplementation;
+namespace DyoMediator.Tests.Abstractions.MockImplementation;
 
 #region External Service
 public interface ISomeExternalService

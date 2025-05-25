@@ -1,5 +1,5 @@
 ﻿
-namespace MyMediator.Abstraction;
+namespace DyoMediator.Abstraction;
 
 public interface IMyMediator
 {

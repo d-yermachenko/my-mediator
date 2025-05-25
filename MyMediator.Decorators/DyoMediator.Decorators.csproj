@@ -8,15 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MyMediator.Abstraction\MyMediator.Abstraction.csproj" />
+    <ProjectReference Include="..\MyMediator.Abstraction\DyoMediator.Abstraction.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Scrutor"/>
+		<PackageReference Include="Scrutor" />
 	</ItemGroup>
 
 </Project>

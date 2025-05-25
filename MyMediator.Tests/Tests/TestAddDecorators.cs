@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using MyMediator.Tests.Abstractions.MockImplementation;
-using MyMediator.Mediator.DIExtension;
-using MyMediator.Decorators.DIExtension;
-using MyMediator.Abstraction;
+﻿using Microsoft.Extensions.DependencyInjection;
+using DyoMediator.Tests.Abstractions.MockImplementation;
+using DyoMediator.Mediator.DIExtension;
+using DyoMediator.Decorators.DIExtension;
+using DyoMediator.Abstraction;
 
-namespace MyMediator.Tests.Tests
+namespace DyoMediator.Tests
 {
     public class TestAddDecorators
     {

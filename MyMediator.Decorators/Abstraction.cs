@@ -1,4 +1,4 @@
-﻿namespace MyMediator.Abstraction;
+﻿namespace DyoMediator.Abstraction;
 
 public interface IRequestDecorator<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
     where TRequest : IRequest<TResponse>;

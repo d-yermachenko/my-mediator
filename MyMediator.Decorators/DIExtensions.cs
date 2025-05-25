@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyMediator.Abstraction;
+using DyoMediator.Abstraction;
 using Scrutor;
 
-namespace MyMediator.Decorators.DIExtension;
+namespace DyoMediator.Decorators.DIExtension;
 
 public static class DIExtensions
 {

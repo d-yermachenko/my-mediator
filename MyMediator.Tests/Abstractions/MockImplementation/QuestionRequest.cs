@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-using MyMediator.Abstraction;
+using DyoMediator.Abstraction;
 
-namespace MyMediator.Tests.Abstractions.MockImplementation;
+namespace DyoMediator.Tests.Abstractions.MockImplementation;
 
 public interface IQuestion
 {

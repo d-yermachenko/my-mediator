@@ -6,9 +6,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using MyMediator.Abstraction;
+using DyoMediator.Abstraction;
 
-namespace MyMediator.Mediator.DIExtension;
+namespace DyoMediator.Mediator.DIExtension;
 
 public static class MyMediatorDIExtensions
 {

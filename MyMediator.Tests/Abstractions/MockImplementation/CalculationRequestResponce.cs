@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using MyMediator.Abstraction;
+using DyoMediator.Abstraction;
 
-namespace MyMediator.Tests.Abstractions.MockImplementation;
+namespace DyoMediator.Tests.Abstractions.MockImplementation;
 
 public interface ITwoNumbersRequest
 {

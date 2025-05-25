@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyMediator.Abstraction;
-using MyMediator.Tests.Abstractions.MockImplementation;
-using MyMediator.Mediator.DIExtension;
-using MyMediator.Decorators.DIExtension;
+using DyoMediator.Abstraction;
+using DyoMediator.Tests.Abstractions.MockImplementation;
+using DyoMediator.Mediator.DIExtension;
+using DyoMediator.Decorators.DIExtension;
 
-namespace MyMediator.Tests.Tests
+namespace DyoMediator.Tests
 {
     public class TestAddUnitsFromAssembly
     {

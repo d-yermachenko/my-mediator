@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyMediator.Abstraction;
+using DyoMediator.Abstraction;
 
-namespace MyMediator.Mediator;
+namespace DyoMediator.Mediator;
 
 file class BehaviourWrapper<TRequest, TResponse>(IRequestBehaviour<TRequest, TResponse> behaviour, IRequestHandler<TRequest, TResponse> nextRequest) : IRequestHandler<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
