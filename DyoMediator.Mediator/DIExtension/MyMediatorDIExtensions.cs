@@ -111,10 +111,13 @@ public static class MyMediatorDIExtensions
             return services;
         }
 
-        public IServiceCollection AddBehavioursFromAssembly(Assembly assembly, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
+        public IServiceCollection AddBehavioursFromAssembly(Assembly assembly, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped) =>
+            AddBehavioursFromTypesSet(services : services,  types: assembly.GetTypes(), serviceLifetime: serviceLifetime);
+
+        public IServiceCollection AddBehavioursFromTypesSet(IEnumerable<Type> types, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
         {
-            var handlerTypes = assembly.GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestBehaviour<,>)));
+            var handlerTypes = 
+                types.Where(t => t.IsClass && !t.IsAbstract && t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestBehaviour<,>)));
             foreach (Type handlerType in handlerTypes)
             {
                 services.AddBehaviour(handlerType, serviceLifetime);

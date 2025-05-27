@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using DyoMediator.Abstraction;
 using Scrutor;
+using System.Reflection;
 
 namespace DyoMediator.Decorators.DIExtension;
 
@@ -13,6 +14,8 @@ public static class DIExtensions
             bool decoratorSucceed = services.TryDecorate(typeof(IRequestHandler<,>), decoratorType);
             return services;
         }
+
+        public IServiceCollection AddDecoratorsFromAssembly(Assembly assembly) => AddDecoratorsFromAssembly(services: services, types: assembly.GetTypes());
 
         public IServiceCollection AddDecoratorsFromAssembly(IEnumerable<Type> types)
         {
