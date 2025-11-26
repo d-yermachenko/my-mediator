@@ -1,14 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>$(Author)</Authors>
-    <Description>Contracts of my implementation of Mediator Pattern with possibility to apply a Decorator to handlers.
-ASP.NET Pipeline-style approach aka Behaviours also supported</Description>
-    <Copyright>MIT Licence</Copyright>
-    <RepositoryUrl>https://github.com/d-yermachenko/my-mediator</RepositoryUrl>
-    <PackageTags>Mediator, CQRS</PackageTags>
-	<IsPackable>true</IsPackable>
-    <PackageProjectUrl>https://github.com/d-yermachenko/my-mediator</PackageProjectUrl>
-    <Title>DyoMediator.Abstraction</Title>
-  </PropertyGroup>
+	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>$(Author)</Authors>
+		<Description>
+			Contracts of my implementation of Mediator Pattern with possibility to apply a Decorator to handlers.
+			ASP.NET Pipeline-style approach aka Behaviours also supported
+		</Description>
+		<Copyright>MIT Licence</Copyright>
+		<RepositoryUrl>https://github.com/d-yermachenko/my-mediator</RepositoryUrl>
+		<PackageTags>Mediator, CQRS</PackageTags>
+		<IsPackable>true</IsPackable>
+		<PackageProjectUrl>https://github.com/d-yermachenko/my-mediator</PackageProjectUrl>
+		<Title>DyoMediator.Abstraction</Title>
+		<PackageId>DyoMediator.Abstraction</PackageId>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
 </Project>
