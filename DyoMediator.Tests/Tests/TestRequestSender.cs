@@ -28,13 +28,13 @@ namespace DyoMediator.Tests
             // Arrange
             var services = new ServiceCollection();
             services.AddMyMediator();
-            services.AddHandler<QuestionRequest, AnswerResponce, MockRequestHandler>();
+            services.AddHandler<QuestionRequest, AnswerResponse, MockRequestHandler>();
             var serviceProvider = services.BuildServiceProvider();
             var mediator = serviceProvider.GetRequiredService<IMyMediator>();
             var request = new QuestionRequest("What is the capital of France?");
 
             // Act
-            AnswerResponce? response = await mediator?.SendAsync<QuestionRequest, AnswerResponce>(request, CancellationToken.None);
+            AnswerResponse? response = await mediator?.SendAsync<QuestionRequest, AnswerResponse>(request, CancellationToken.None);
             // Assert
             Assert.NotNull(mediator);
             Assert.NotNull(response);

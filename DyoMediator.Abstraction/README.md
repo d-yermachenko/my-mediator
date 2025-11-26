@@ -32,13 +32,13 @@ public interface IRequestHandler<TRequest, TResponse>
 
 ## Example Request/Response
 ```csharp
-public sealed class QuestionRequest : IRequest<AnswerResponce>
+public sealed class QuestionRequest : IRequest<AnswerResponse>
 {
     public string Question { get; }
     public QuestionRequest(string question) => Question = question;
 }
 
-public sealed class AnswerResponce
+public sealed class AnswerResponse
 {
     public string Response { get; init; } = string.Empty;
 }
