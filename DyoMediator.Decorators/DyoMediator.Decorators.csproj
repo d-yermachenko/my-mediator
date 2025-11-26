@@ -18,5 +18,11 @@
 	<ItemGroup>
 		<PackageReference Include="Scrutor" />
 	</ItemGroup>
+	<ItemGroup>
+		<Content Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
 
 </Project>
