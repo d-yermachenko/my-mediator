@@ -1,15 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<LangVersion>preview</LangVersion>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>DyoMediator.Mediator</Title>
 		<Description>Contains implementation of Mediator Class and MS Dependency injection</Description>
 		<Copyright>MIT License</Copyright>
+		<IsPackable>true</IsPackable>
+		<PackageTags>Mediator,CQRS,DependencyInjection</PackageTags>
 		<PackageProjectUrl>https://github.com/d-yermachenko/my-mediator</PackageProjectUrl>
+		<PackageId>DyoMediator.Mediator</PackageId>
 		<RepositoryUrl>https://github.com/d-yermachenko/my-mediator</RepositoryUrl>
 		<UserSecretsId>85addf8a-f801-4b1f-8cc4-4f017610ff29</UserSecretsId>
 	</PropertyGroup>

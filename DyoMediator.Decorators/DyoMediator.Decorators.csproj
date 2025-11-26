@@ -1,14 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<LangVersion>preview</LangVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Title>DyoMediator.Mediator</Title>
-	<Description>Contains an extension allowing to implement behaviours like Decorator pattern
-</Description>
+	<Description>Contains an extension allowing to implement behaviours like Decorator pattern</Description>
 	<PackageProjectUrl>https://github.com/d-yermachenko/my-mediator</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/d-yermachenko/my-mediator</RepositoryUrl>
 	<PackageTags>Mediator,CORS,Decorator</PackageTags>
