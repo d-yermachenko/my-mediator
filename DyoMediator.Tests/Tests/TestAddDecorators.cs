@@ -46,7 +46,7 @@ namespace DyoMediator.Tests
         }
 
         [Fact]
-        public async Task Request_Has_Two_Decorator()
+        public async Task Request_Has_Two_Decorators()
         {
             ServiceCollection services = new();
             services
@@ -67,7 +67,7 @@ namespace DyoMediator.Tests
 
 
         [Fact]
-        public async Task Request_Has_Three_Decorator()
+        public async Task Request_Has_Three_Decorators()
         {
             ServiceCollection services = new();
             services

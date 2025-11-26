@@ -59,5 +59,25 @@ namespace DyoMediator.Tests
 
             Assert.Equal(64, answer.Result);
         }
+
+        [Fact]
+        public async Task Request_Has_Decorators_and_Behaviours_From_Assembly()
+        {
+            ServiceCollection services = new();
+            services
+                .AddMyMediator()
+                .AddHandlersFromAssembly(typeof(TestAddUnitsFromAssembly).Assembly)
+                .AddDecoratorsFromAssembly(typeof(TestAddUnitsFromAssembly).Assembly.GetTypes())
+                .AddBehavioursFromAssembly(typeof(TestAddUnitsFromAssembly).Assembly);
+
+                ;
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
+            IMyMediator myMediator = serviceProvider.GetRequiredService<IMyMediator>();
+            SumRequest sumRequest = new SumRequest(2, 2);
+
+            var answer = await myMediator.SendAsync<SumRequest, SumResponse>(sumRequest);
+
+            Assert.Equal(1024, answer.Result);
+        }
     }
 }

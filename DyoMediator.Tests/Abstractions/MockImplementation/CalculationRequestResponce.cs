@@ -65,10 +65,8 @@ public record DifResponse(double Result) : ITwoNumberResult
 
 public class DifRequestHandler : IRequestHandler<DifRequest, DifResponse>
 {
-    public Task<DifResponse> HandleAsync(DifRequest request, CancellationToken cancellationToken = default)
-    {
-        return Task.FromResult(new DifResponse(request.NumberOne + request.NumberTwo));
-    }
+    public Task<DifResponse> HandleAsync(DifRequest request, CancellationToken cancellationToken = default) 
+        => Task.FromResult(new DifResponse(request.NumberOne + request.NumberTwo));
 }
 
 #endregion
