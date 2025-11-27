@@ -1,16 +1,18 @@
-name: Publish NuGet Packages To github Packages
+name: Publish to NuGet.org
 
-on:
-  push:
-    tags:
-      - 'v*'
+on: workflow_dispatch
+    
+   
 
 permissions:
   contents: read
-  packages: write
 
 jobs:
   publish:
+    strategy:
+      matrix:
+        DOTNET_VERSION: ["9.0.x", "10.0.x"] 
+
     runs-on: ubuntu-latest
     
     steps:
@@ -20,7 +22,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '10.0.x'
+        dotnet-version: ${{matrix.DOTNET_VERSION}}
         
     - name: Restore dependencies
       run: dotnet restore
@@ -41,4 +43,4 @@ jobs:
       run: dotnet pack DyoMediator.Decorators/DyoMediator.Decorators.csproj --configuration Release --no-build --output ./artifacts
       
     - name: Publish to GitHub Packages
-      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ github.token }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGETKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
