@@ -1,0 +1,46 @@
+name: Publish NuGet Packages To Nuget.org
+
+on: workflow_dispatch
+    
+   
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    strategy:
+      matrix:
+        DOTNET_VERSION: ["9.0.x", "10.0.x"] 
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{matrix.DOTNET_VERSION}}
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+      
+    - name: Pack DyoMediator.Abstraction
+      run: dotnet pack DyoMediator.Abstraction/DyoMediator.Abstraction.csproj --configuration Release --no-build --output ./artifacts
+      
+    - name: Pack DyoMediator.Mediator
+      run: dotnet pack DyoMediator.Mediator/DyoMediator.Mediator.csproj --configuration Release --no-build --output ./artifacts
+      
+    - name: Pack DyoMediator.Decorators
+      run: dotnet pack DyoMediator.Decorators/DyoMediator.Decorators.csproj --configuration Release --no-build --output ./artifacts
+      
+    - name: Publish to GitHub Packages
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGETKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
