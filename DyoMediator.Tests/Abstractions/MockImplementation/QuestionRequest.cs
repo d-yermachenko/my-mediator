@@ -18,45 +18,45 @@ public interface IAnswer
     string AdditionalInfo { get; set; }
 }
 
-public class AnswerResponce : IAnswer
+public class AnswerResponse : IAnswer
 {
     public string Response { get; set; } = string.Empty;
     public string AdditionalInfo { get; set; } = String.Empty;
 }
 
-public class QuestionRequest (string question) : IRequest<AnswerResponce>, IQuestion
+public class QuestionRequest (string question) : IRequest<AnswerResponse>, IQuestion
 {
     public string Question { get; set; } = question;
 }
 
 
 
-public class MockRequestHandler : IRequestHandler<QuestionRequest, AnswerResponce>
+public class MockRequestHandler : IRequestHandler<QuestionRequest, AnswerResponse>
 {
-    public Task<AnswerResponce> HandleAsync(QuestionRequest request, CancellationToken cancellationToken = default)
+    public Task<AnswerResponse> HandleAsync(QuestionRequest request, CancellationToken cancellationToken = default)
     {
-        return Task.FromResult(new AnswerResponce { Response = $"{this.GetType().Name} gived answer to question \" {request.Question}\" "});
+        return Task.FromResult(new AnswerResponse { Response = $"{this.GetType().Name} gived answer to question \" {request.Question}\" "});
     }
 }
 
 
-public class MockRequestBehaviourOne<TRequest, TResponce> : IRequestBehaviour<TRequest, TResponce>
-    where TRequest : IRequest<TResponce>, IQuestion
-    where TResponce : class, IAnswer
+public class MockRequestBehaviourOne<TRequest, TResponse> : IRequestBehaviour<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>, IQuestion
+    where TResponse : class, IAnswer
 {
-    public async Task<TResponce> HandleAsync(TRequest request, RequestHandlerDelegate<TRequest, TResponce> next, CancellationToken cancellationToken = default)
+    public async Task<TResponse> HandleAsync(TRequest request, RequestHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken = default)
     {
         var result = await next(request, cancellationToken);
-        result.AdditionalInfo += $"This was gecorated by {this.GetType().Name}";
+        result.AdditionalInfo += $"This was decorated by {this.GetType().Name}";
         return result;
     }
 }
 
-public class MockRequestBehaviourTwo<TRequest, TResponce> : IRequestBehaviour<QuestionRequest, AnswerResponce>
+public class MockRequestBehaviourTwo<TRequest, TResponse> : IRequestBehaviour<QuestionRequest, AnswerResponse>
     where TRequest: QuestionRequest
-    where TResponce : AnswerResponce
+    where TResponse : AnswerResponse
 {
-    public async Task<AnswerResponce> HandleAsync(QuestionRequest request, RequestHandlerDelegate<QuestionRequest, AnswerResponce> next, CancellationToken cancellationToken = default)
+    public async Task<AnswerResponse> HandleAsync(QuestionRequest request, RequestHandlerDelegate<QuestionRequest, AnswerResponse> next, CancellationToken cancellationToken = default)
     {
         var result = await next.Invoke(request, cancellationToken);
         result.Response += $"{this.GetType().Name} added after";

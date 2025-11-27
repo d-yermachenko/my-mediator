@@ -23,7 +23,7 @@ namespace DyoMediator.Tests
             // Arrange
             var request = new QuestionRequest("What is the capital of France?");
             var handler = new MockRequestHandler();
-            var behaviour = new MockRequestBehaviourTwo<QuestionRequest, AnswerResponce>();
+            var behaviour = new MockRequestBehaviourTwo<QuestionRequest, AnswerResponse>();
             var expectedResponse = $"{behaviour.GetType().Name}";
             // Act
             var response = await behaviour.HandleAsync(request, handler.HandleAsync);
