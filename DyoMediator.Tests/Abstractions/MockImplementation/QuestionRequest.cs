@@ -47,7 +47,7 @@ public class MockRequestBehaviourOne<TRequest, TResponse> : IRequestBehaviour<TR
     public async Task<TResponse> HandleAsync(TRequest request, RequestHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken = default)
     {
         var result = await next(request, cancellationToken);
-        result.AdditionalInfo += $"This was gecorated by {this.GetType().Name}";
+        result.AdditionalInfo += $"This was decorated by {this.GetType().Name}";
         return result;
     }
 }
