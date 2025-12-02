@@ -34,7 +34,7 @@ namespace DyoMediator.Tests
             var request = new QuestionRequest("What is the capital of France?");
 
             // Act
-            AnswerResponse? response = await mediator?.SendAsync<QuestionRequest, AnswerResponse>(request, CancellationToken.None);
+            AnswerResponse? response = await mediator.SendAsync<QuestionRequest, AnswerResponse>(request, CancellationToken.None);
             // Assert
             Assert.NotNull(mediator);
             Assert.NotNull(response);
