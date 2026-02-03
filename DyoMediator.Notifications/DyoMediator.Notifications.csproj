@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <Title>DyoMediator.Notifications</Title>
+	  <Description>Contains implementation of Notifications handler mediator for domain event handling</Description>
+	  <Copyright>MIT License</Copyright>
+	  <IsPackable>true</IsPackable>
+	  <PackageTags>Mediator,CQRS,DependencyInjection</PackageTags>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Scrutor" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+	</ItemGroup>
+
+</Project>

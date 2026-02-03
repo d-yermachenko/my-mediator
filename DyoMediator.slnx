@@ -6,5 +6,6 @@
   <Project Path="DyoMediator.Abstraction/DyoMediator.Abstraction.csproj" />
   <Project Path="DyoMediator.Decorators/DyoMediator.Decorators.csproj" />
   <Project Path="DyoMediator.Mediator/DyoMediator.Mediator.csproj" />
+  <Project Path="DyoMediator.Notifications/DyoMediator.Notifications.csproj" Id="be8e2979-7b1a-4f12-a93f-0886490723c6" />
   <Project Path="DyoMediator.Tests/DyoMediator.Tests.csproj" />
 </Solution>
