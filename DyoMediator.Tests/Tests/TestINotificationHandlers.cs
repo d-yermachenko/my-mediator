@@ -16,7 +16,7 @@ public class TestINotificationHandlers
             .AddMyPublisher<IDummyDomainEvent>(assembly: this.GetType().Assembly);
         IServiceProvider serviceProvider = services.BuildServiceProvider();
         // Act
-        IMyPublisher? myPublisher = serviceProvider.GetService<IMyPublisher>();
+        var myPublisher = serviceProvider.GetService<IMyPublisher<IDummyDomainEvent>>();
         // Assert
         Assert.NotNull(myPublisher);
     }
@@ -35,7 +35,7 @@ public class TestINotificationHandlers
         IServiceProvider serviceProvider = services.BuildServiceProvider();
 
         DummyDomainEvent dummyDomainEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestEvent");
-        IMyPublisher myPublisher = serviceProvider.GetRequiredService<IMyPublisher>();
+        var myPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyDomainEvent>>();
         // Act
         await myPublisher.PublishAsync<IDummyDomainEvent>(dummyDomainEvent);
         // Assert
@@ -57,7 +57,7 @@ public class TestINotificationHandlers
         IServiceProvider serviceProvider = services.BuildServiceProvider();
 
         DummyDomainEvent dummyDomainEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestEvent");
-        IMyPublisher myPublisher = serviceProvider.GetRequiredService<IMyPublisher>();
+        var myPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyDomainEvent>>();
         // Act
         await myPublisher.PublishAsync<IDummyDomainEvent>(dummyDomainEvent);
         // Assert
@@ -67,7 +67,7 @@ public class TestINotificationHandlers
         Assert.True(raisedEvents.FindAll(e => e.Description.Contains(nameof(AnotherDummyEventHandler))).Count == 1);
     }
 
-    [Fact(DisplayName = "Test Two Notification Handlers")]
+    [Fact(DisplayName = "Test Domain and Integration separation")]
     public async Task IntegrationAndDomainEvents()
     {
         // Arrange
@@ -85,10 +85,11 @@ public class TestINotificationHandlers
         DummyDomainEvent dummyDomainEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestEvent");
         DummyIntegrationEvent dummyIntegrationEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestIntegrationEvent");
 
-        IMyPublisher myPublisher = serviceProvider.GetRequiredService<IMyPublisher>();
+        IMyPublisher<IDummyDomainEvent> myPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyDomainEvent>>();
+        IMyPublisher<IDummyIntegrationEvent> myIntegrationPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyIntegrationEvent>>();
         // Act
         await myPublisher.PublishAsync(dummyDomainEvent);
-        await myPublisher.PublishAsync(dummyIntegrationEvent);
+        await myIntegrationPublisher.PublishAsync(dummyIntegrationEvent);
 
         // Assert
         List<IDummyDomainEvent> raisedEvents = sideEffectsHolder.RaisedEvents;
@@ -100,6 +101,6 @@ public class TestINotificationHandlers
         Assert.Single(processedEvents);
         Assert.Contains(dummyIntegrationEvent, processedEvents);
         Assert.True(processedEvents[0].ProcessedAt.HasValue);
-        Assert.Equal("DummyIntegrationEventHandler", processedEvents[0].ProcessorName);
+        Assert.Equal(nameof(DummyIntegrationEventHandler), processedEvents[0].ProcessorName);
     }
 }

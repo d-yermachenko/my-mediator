@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace DyoMediator.Notifications;
 
-public interface IMyPublisher
+/*public interface IMyPublisher
 {
     Task PublishAsync<TNotificationType>(TNotificationType notification, CancellationToken cancellationToken = default)
         where TNotificationType : class;
 
     Task PublishAsync<T>(IEnumerable<T> notifications, CancellationToken cancellationToken = default) where T : class  
         => Task.WhenAll(notifications.Select(notification => PublishAsync(notification, cancellationToken))) ;
+}*/
+
+public interface IMyPublisher<in TNotificationBaseType>
+    where TNotificationBaseType : class
+{
+    Task PublishAsync<TMessageType>(TMessageType notification, CancellationToken cancellationToken = default)
+        where TMessageType : class, TNotificationBaseType;
 }

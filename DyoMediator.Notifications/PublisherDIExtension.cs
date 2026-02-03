@@ -8,8 +8,8 @@ public static class PublisherDIExtension
     extension(IServiceCollection services)
     {
         public IServiceCollection AddMyPublisher<TNotificationBaseType>(ServiceLifetime serviceLifetime = ServiceLifetime.Scoped, Assembly? assembly = null)
-        where TNotificationBaseType : class => AddMyPublisher<TNotificationBaseType>(services, serviceLifetime, ((assembly??Assembly.GetCallingAssembly()).GetTypes()));
-       
+        where TNotificationBaseType : class => AddMyPublisher<TNotificationBaseType>(services, serviceLifetime, ((assembly ?? Assembly.GetCallingAssembly()).GetTypes()));
+
 
         public IServiceCollection AddMyPublisher<TNotificationBaseType>(ServiceLifetime serviceLifetime = ServiceLifetime.Scoped, params Type[] types)
             where TNotificationBaseType : class
@@ -38,8 +38,9 @@ public static class PublisherDIExtension
             }
 
             // Register the publisher itself so consumers can publish notifications
-            services.Add(new ServiceDescriptor(typeof(IMyPublisher), typeof(MyPublisher), serviceLifetime));
-
+            // Register the publisher itself so consumers can publish notifications
+            Type serviceType = typeof(IMyPublisher<>).MakeGenericType(typeof(TNotificationBaseType));
+            services.Add(new ServiceDescriptor(serviceType, (sp) => new MyPublisher<TNotificationBaseType>(sp), serviceLifetime));
             return services;
         }
     }

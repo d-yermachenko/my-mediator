@@ -49,16 +49,16 @@ internal class DummyIntegrationEvent : IDummyIntegrationEvent
     }
 }
 
-internal class AnotherDummyIntegrationEventHandler : IMyNotificationHandler<DummyIntegrationEvent>
+internal class DummyIntegrationEventHandler : IMyNotificationHandler<DummyIntegrationEvent>
 {
     private readonly IntegrationSideEffectsHolder _sideEffectsHolder;
-    public AnotherDummyIntegrationEventHandler(IntegrationSideEffectsHolder sideEffectsHolder)
+    public DummyIntegrationEventHandler(IntegrationSideEffectsHolder sideEffectsHolder)
     {
         _sideEffectsHolder = sideEffectsHolder;
     }
     public Task HandleAsync(DummyIntegrationEvent notification, CancellationToken cancellationToken = default)
     {
-        notification.MarkAsProcessed(nameof(AnotherDummyIntegrationEventHandler), DateTime.UtcNow);
+        notification.MarkAsProcessed(nameof(DummyIntegrationEventHandler), DateTime.UtcNow);
         _sideEffectsHolder.AddEvent(notification);
         return Task.CompletedTask;
     }

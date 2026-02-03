@@ -41,28 +41,28 @@ public record DummyDomainEvent : IDummyDomainEvent
     }
 }
 
-internal class DummyEventHandler : IMyNotificationHandler<IDummyDomainEvent>
+internal class DummyEventHandler : IMyNotificationHandler<DummyDomainEvent>
 {
     private readonly SideEffectsHolder _sideEffectsHolder;
     public DummyEventHandler(SideEffectsHolder sideEffectsHolder)
     {
         _sideEffectsHolder = sideEffectsHolder;
     }
-    public Task HandleAsync(IDummyDomainEvent notification, CancellationToken cancellationToken = default)
+    public Task HandleAsync(DummyDomainEvent notification, CancellationToken cancellationToken = default)
     {
         _sideEffectsHolder.AddEvent(notification);
         return Task.CompletedTask;
     }
 }
 
-internal class AnotherDummyEventHandler : IMyNotificationHandler<IDummyDomainEvent>
+internal class AnotherDummyEventHandler : IMyNotificationHandler<DummyDomainEvent>
 {
     private readonly SideEffectsHolder _sideEffectsHolder;
     public AnotherDummyEventHandler(SideEffectsHolder sideEffectsHolder)
     {
         _sideEffectsHolder = sideEffectsHolder;
     }
-    public Task HandleAsync(IDummyDomainEvent notification, CancellationToken cancellationToken = default)
+    public Task HandleAsync(DummyDomainEvent notification, CancellationToken cancellationToken = default)
     {
         _sideEffectsHolder.AddEvent(new DummyDomainEvent(notification.EventId, notification.OccurredOn, notification.Description + " (Handled by AnotherDummyEventHandler)"));
         return Task.CompletedTask;
