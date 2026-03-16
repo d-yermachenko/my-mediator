@@ -2,12 +2,12 @@
 using DyoMediator.Tests.Abstractions.MockImplementation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DyoMediator.Tests;
+namespace DyoMediator.Tests.Notifications;
 
 
 public class TestINotificationHandlers
 {
-    [Fact(DisplayName = "Test Dependency Container Has Publisher")]
+    [Fact(DisplayName = "Dependency container has publisher")]
     public async Task TestDependencyContainerHasPublisher()
     {
         // Arrange
@@ -34,10 +34,10 @@ public class TestINotificationHandlers
 
         IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-        DummyDomainEvent dummyDomainEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestEvent");
+        DummyDomainEvent dummyDomainEvent = new(Guid.NewGuid(), DateTime.UtcNow, "TestEvent");
         var myPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyDomainEvent>>();
         // Act
-        await myPublisher.PublishAsync<IDummyDomainEvent>(dummyDomainEvent);
+        await myPublisher.PublishAsync(dummyDomainEvent);
         // Assert
         List<IDummyDomainEvent> raisedEvents = sideEffectsHolder.RaisedEvents;
         Assert.Single(raisedEvents);
@@ -56,10 +56,10 @@ public class TestINotificationHandlers
 
         IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-        DummyDomainEvent dummyDomainEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestEvent");
+        DummyDomainEvent dummyDomainEvent = new(Guid.NewGuid(), DateTime.UtcNow, "TestEvent");
         var myPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyDomainEvent>>();
         // Act
-        await myPublisher.PublishAsync<IDummyDomainEvent>(dummyDomainEvent);
+        await myPublisher.PublishAsync(dummyDomainEvent);
         // Assert
         List<IDummyDomainEvent> raisedEvents = sideEffectsHolder.RaisedEvents;
         Assert.True(raisedEvents.Count == 2);
@@ -82,8 +82,8 @@ public class TestINotificationHandlers
 
         IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-        DummyDomainEvent dummyDomainEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestEvent");
-        DummyIntegrationEvent dummyIntegrationEvent = new(Guid.CreateVersion7(), DateTime.UtcNow, "TestIntegrationEvent");
+        DummyDomainEvent dummyDomainEvent = new(Guid.NewGuid(), DateTime.UtcNow, "TestEvent");
+        DummyIntegrationEvent dummyIntegrationEvent = new(Guid.NewGuid(), DateTime.UtcNow, "TestIntegrationEvent");
 
         IMyPublisher<IDummyDomainEvent> myPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyDomainEvent>>();
         IMyPublisher<IDummyIntegrationEvent> myIntegrationPublisher = serviceProvider.GetRequiredService<IMyPublisher<IDummyIntegrationEvent>>();

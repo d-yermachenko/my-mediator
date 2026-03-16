@@ -29,7 +29,7 @@ internal interface IDummyDomainEvent
 
 public record DummyDomainEvent : IDummyDomainEvent
 {
-    public Guid EventId { get; private set; } = Guid.CreateVersion7();
+    public Guid EventId { get; private set; } = Guid.NewGuid();
     public DateTime OccurredOn { get; private set; } = DateTime.UtcNow;
     public string Description { get; private set; }
 

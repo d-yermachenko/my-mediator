@@ -29,7 +29,7 @@ internal interface IDummyIntegrationEvent
 
 internal class DummyIntegrationEvent : IDummyIntegrationEvent
 {
-    public Guid EventId { get; private set; } = Guid.CreateVersion7();
+    public Guid EventId { get; private set; } = Guid.NewGuid();
     public DateTime OccurredOn { get; private set; } = DateTime.UtcNow;
     public string Description { get; private set; }
     public DateTime? ProcessedAt { get; private set; }

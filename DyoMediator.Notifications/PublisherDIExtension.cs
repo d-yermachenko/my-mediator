@@ -12,7 +12,7 @@ public static class PublisherDIExtension
 
 
         public IServiceCollection AddMyPublisher<TNotificationBaseType>(ServiceLifetime serviceLifetime = ServiceLifetime.Scoped, params Type[] types)
-            where TNotificationBaseType : class
+            where TNotificationBaseType : notnull
         {
             var handlerInterfaceOpen = typeof(IMyNotificationHandler<>);
 

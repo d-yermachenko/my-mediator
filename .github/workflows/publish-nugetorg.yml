@@ -40,6 +40,9 @@ jobs:
       
     - name: Pack DyoMediator.Decorators
       run: dotnet pack DyoMediator.Decorators/DyoMediator.Decorators.csproj --configuration Release --no-build --output ./artifacts
+
+    - name: Pack DyoMediator.Notifications
+      run: dotnet pack DyoMediator.Notifications/DyoMediator.Notifications.csproj --configuration Release --no-build --output ./artifacts
       
     - name: Publish to GitHub Packages
       shell: pwsh      

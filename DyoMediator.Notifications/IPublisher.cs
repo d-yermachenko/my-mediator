@@ -16,8 +16,16 @@ namespace DyoMediator.Notifications;
 }*/
 
 public interface IMyPublisher<in TNotificationBaseType>
-    where TNotificationBaseType : class
+    where TNotificationBaseType : notnull
 {
+    /// <summary>
+    /// This method will publish notification to all registered handlers for this notification type.
+    /// </summary>
+    /// <typeparam name="TMessageType">Used to check type of notification, which has to implement TNotificationBaseType. Do not set it explicitly, just pass your notification, type will resolved by handler. Othervice, your handler can be not resolved</typeparam>
+    /// <param name="notification">Notification</param>
+    /// <param name="cancellationToken"></param>
+    /// <remarks></remarks>
+    /// <returns></returns>
     Task PublishAsync<TMessageType>(TMessageType notification, CancellationToken cancellationToken = default)
-        where TMessageType : class, TNotificationBaseType;
+        where TMessageType : notnull, TNotificationBaseType;
 }

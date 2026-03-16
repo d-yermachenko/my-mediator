@@ -4,7 +4,7 @@ using DyoMediator.Tests.Abstractions.MockImplementation;
 using DyoMediator.Mediator.DIExtension;
 using DyoMediator.Decorators.DIExtension;
 
-namespace DyoMediator.Tests;
+namespace DyoMediator.Tests.Requests;
 
 public class TestAddCommandStyleRequests
 {
