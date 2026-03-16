@@ -4,7 +4,7 @@ using DyoMediator.Mediator.DIExtension;
 using DyoMediator.Decorators.DIExtension;
 using DyoMediator.Abstraction;
 
-namespace DyoMediator.Tests
+namespace DyoMediator.Tests.Behaviours
 {
     public class TestAddDecorators
     {

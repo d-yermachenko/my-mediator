@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>DyoMediator.Notifications</Title>
+		<Description>Allows handling of domain events through notifications</Description>
+		<PackageProjectUrl>https://github.com/d-yermachenko/my-mediator</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/d-yermachenko/my-mediator</RepositoryUrl>
+		<PackageTags>Mediator,CORS,Decorator,Notifications</PackageTags>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Scrutor" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<PropertyGroup>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+</Project>

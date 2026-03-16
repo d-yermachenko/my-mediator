@@ -3,7 +3,7 @@ using DyoMediator.Abstraction;
 using DyoMediator.Mediator.DIExtension;
 using DyoMediator.Tests.Abstractions.MockImplementation;
 
-namespace DyoMediator.Tests;
+namespace DyoMediator.Tests.Behaviours;
 
 public class TestAddBehaviours
 {

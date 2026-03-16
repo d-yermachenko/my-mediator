@@ -16,6 +16,7 @@
     <ProjectReference Include="..\DyoMediator.Abstraction\DyoMediator.Abstraction.csproj" />
     <ProjectReference Include="..\DyoMediator.Decorators\DyoMediator.Decorators.csproj" />
     <ProjectReference Include="..\DyoMediator.Mediator\DyoMediator.Mediator.csproj" />
+	<ProjectReference Include="..\DyoMediator.Notifications\DyoMediator.Notifications.csproj" />
   </ItemGroup>
 
   <ItemGroup>
